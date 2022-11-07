@@ -6,9 +6,10 @@
   <% end %>
   </div>
 
-  <form action="/games/score" method="post" data-turbo="false">
+  <form action="/score" method="POST" data-turbo="false">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <p> quel est le mot le plus long que tu puisse écrire ?</p>
+    <%= hidden_field_tag :letters, @letters %>
+    <p> quel est le mot le plus long que tu puisse écrire ?</p>
     <div class="form-group d-flex">
       <input type="text" class="form-control" id="word" name="word" placeholder="Your world" >
       <button type="submit" class="btn btn-warning">Play</button>
