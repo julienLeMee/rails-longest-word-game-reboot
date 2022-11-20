@@ -1,18 +1,20 @@
-<div class="d-flex flex-column align-items-center">
-  <h1>New Game</h1>
-  <div class="d-flex m-5">
-  <% @letters.each do |letter| %>
-      <h2 class="m-3 letter"><%= letter %></h2>
-  <% end %>
-  </div>
-
-  <form action="/score" method="POST" data-turbo="false">
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= hidden_field_tag :letters, @letters %>
-    <p> quel est le mot le plus long que tu puisse écrire ?</p>
-    <div class="form-group d-flex">
-      <input type="text" class="form-control" id="word" name="word" placeholder="Your word" >
-      <button type="submit" class="btn btn-warning">Play</button>
+<div class="container">
+  <div class="d-flex flex-column align-items-center">
+    <h1>New Game</h1>
+    <div class="d-flex m-5">
+    <% @letters.each do |letter| %>
+        <h2 class="m-3 letter"><%= letter %></h2>
+    <% end %>
     </div>
-  </form>
+
+    <form action="/score" method="POST" data-turbo="false">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :letters, @letters %>
+      <h3 class="mb-3"> quel est le mot le plus long que tu puisse écrire ?</h3>
+      <div class="form-group d-flex">
+        <input type="text" class="form-control" id="word" name="word" placeholder="Your word" >
+        <button type="submit" class="btn btn-warning">Play</button>
+      </div>
+    </form>
+  </div>
 </div>
