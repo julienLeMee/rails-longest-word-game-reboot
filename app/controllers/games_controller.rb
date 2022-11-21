@@ -31,7 +31,7 @@ class GamesController < ApplicationController
   # end
 
   def included?(word, letters)
-    # word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
+    word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
   end
 
   def english_word?(word)
