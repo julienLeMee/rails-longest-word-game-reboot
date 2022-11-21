@@ -26,12 +26,12 @@ class GamesController < ApplicationController
 
   private
 
-  def score_params
-    params.require(:word).permit(:letters)
-  end
+  # def score_params
+  #   params.require(:word).permit(:letters)
+  # end
 
   def included?(word, letters)
-    word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
+    # word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
   end
 
   def english_word?(word)
