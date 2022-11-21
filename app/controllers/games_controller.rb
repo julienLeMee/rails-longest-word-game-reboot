@@ -1,18 +1,21 @@
 require 'open-uri'
 
 class GamesController < ApplicationController
-  VOWELS = ['A','E','I','O','U','Y']
-
-  def new
-    @letters = Array.new(5) { VOWELS.sample }
-    @letters += Array.new(5) { (('A'..'Z').to_a - VOWELS).sample }
-    @letters.shuffle!
-  end
+  VOYELLES = ['A','E','I','O','U','Y']
 
   # def new
-  #   @letters = []
-  #   10.times { @letters << ('A'..'Z').to_a.sample }
+  #   @letters += Array.new(5) { VOYELLES.sample }
+  #   @letters += Array.new(5) { (('A'..'Z').to_a - VOYELLES).sample }
+  #   @letters.shuffle!
   # end
+
+  def new
+    @letters = []
+    5.times do
+      @letters << ('A'..'Z').to_a.sample
+      @letters << VOYELLES.sample
+    end
+  end
 
   def score
     @letters = params[:letters].split
@@ -22,6 +25,10 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def score_params
+    params.require(:word).permit(:letters)
+  end
 
   def included?(word, letters)
     word.chars.all? { |letter| word.count(letter) <= letters.count(letter) }
